@@ -16,7 +16,7 @@
 
 from __future__ import print_function
 import RPi.GPIO as GPIO
-import subprocess, time, Image, socket
+import subprocess, time, socket
 from Adafruit_Thermal import *
 
 ledPin       = 18
@@ -48,12 +48,12 @@ def hold():
 
 # Called at periodic intervals (30 seconds by default).
 # Invokes twitter script.
-def interval():
-  GPIO.output(ledPin, GPIO.HIGH)
-  p = subprocess.Popen(["python", "twitter.py", str(lastId)],
-    stdout=subprocess.PIPE)
-  GPIO.output(ledPin, GPIO.LOW)
-  return p.communicate()[0] # Script pipes back lastId, returned to main
+#def interval():
+#  GPIO.output(ledPin, GPIO.HIGH)
+#  p = subprocess.Popen(["python", "twitter.py", str(lastId)],
+#    stdout=subprocess.PIPE)
+#  GPIO.output(ledPin, GPIO.LOW)
+#  return p.communicate()[0] # Script pipes back lastId, returned to main
 
 
 # Called once per day (6:30am by default).
@@ -158,9 +158,9 @@ while(True):
   # Every 30 seconds, run Twitter scripts.  'lastId' is passed around
   # to preserve state between invocations.  Probably simpler to do an
   # import thing.
-  if t > nextInterval:
-    nextInterval = t + 30.0
-    result = interval()
-    if result is not None:
-      lastId = result.rstrip('\r\n')
+#  if t > nextInterval:
+#    nextInterval = t + 30.0
+#    result = interval()
+#    if result is not None:
+#      lastId = result.rstrip('\r\n')
 

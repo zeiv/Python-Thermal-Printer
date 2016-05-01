@@ -23,7 +23,7 @@ from xml.dom.minidom import parseString
 # by 'manually' visiting http://weather.yahoo.com, entering a location
 # and requesting a forecast, then copy the number from the end of the
 # current URL string and paste it here.
-WOEID = '2459115'
+WOEID = '12790347'
 
 # Dumps one forecast line to the printer
 def forecast(idx):
